@@ -1,0 +1,28 @@
+# Add an operator subscription before creating an instance of it
+# WARNING: SCC for WKC, DB2 has not been created
+#   https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=tasks-custom-sccs-services
+#
+---
+resources:
+ - cpd/license-service.yaml
+ - cpd/operator-subscriptions/scheduling-service.yaml
+ - cpd/operator-subscriptions/cpd-operator.yaml
+ - cpd/operator-subscriptions/cpd-operator-ns-scoped.yaml
+ - cpd/operator-subscriptions/csv-injector.yaml
+ 
+ - cpd/edb-postgres-opreq.yaml
+ - cpd/operator-subscriptions/edb-postgres.yaml
+ - cpd/operator-subscriptions/watson-knowledge-studio.yaml
+ - cpd/operator-subscriptions/watson-discovery.yaml
+patches:
+- target:
+    group: argoproj.io
+    kind: Application
+    labelSelector: "gitops.tier.layer=gitops"
+  patch: |-
+    - op: add
+      path: /spec/source/repoURL
+      value: https://github.com/rampadc/cpd-wds-wks.git
+    - op: add
+      path: /spec/source/targetRevision
+      value: master

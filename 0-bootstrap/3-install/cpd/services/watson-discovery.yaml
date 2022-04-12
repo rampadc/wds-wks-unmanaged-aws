@@ -1,0 +1,17 @@
+apiVersion: discovery.watson.ibm.com/v1
+kind: WatsonDiscovery
+metadata:
+  annotations:
+    oppy.ibm.com/disable-rollback: "true"
+    argocd.argoproj.io/sync-wave: "302"
+  name: wd
+  namespace: cpd-instance    
+spec:
+  license:
+    accept: true
+  version: 4.0.6
+  shared:
+    storageClassName: ocs-storagecluster-ceph-rbd
+    deploymentType: Production
+  watsonGateway:
+    version: main
