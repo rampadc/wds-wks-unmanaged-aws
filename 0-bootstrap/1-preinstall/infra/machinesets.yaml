@@ -18,15 +18,15 @@ spec:
     path: machinesets
     helm:
       values: |
-          infrastructureId: "${INFRASTRUCTURE_ID}"
+          infrastructureId: itzocp-50b01ssfct-wsi-mhpcq
           # cloudProvider.name set to aws, azure or vsphere
           cloudProvider:
-            name: "${PLATFORM}"
-            managed: ${MANAGED}
+            name: aws
+            managed: false
           # only for "aws" or "azure" maybe "gcp"
           cloud:
-            region: ${REGION}
-            image: ${IMAGE_NAME}
+            region: ap-southeast-1
+            image: ami-0b574d30ee267107c
           # only for "vsphere" - ignored for other
           vsphere:
             networkName: ${VS_NETWORK}
