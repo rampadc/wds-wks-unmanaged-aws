@@ -20,7 +20,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/source/repoURL
-      value: https://github.com/rampadc/wds-wks-unmanaged-aws.git
+      value: https://github.com/one-touch-provisioning/otp-gitops-infra.git
     - op: add
       path: /spec/source/targetRevision
       value: master
