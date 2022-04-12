@@ -7,7 +7,7 @@ patches:
 - target:
     group: argoproj.io
     kind: Application
-    labelSelector: "gitops.tier.layer=infra"
+    labelSelector: "gitops.tier.layer=gitops"
   patch: |-
     - op: add
       path: /spec/source/repoURL
@@ -25,17 +25,6 @@ patches:
       value: https://github.com/one-touch-provisioning/otp-gitops-infra.git
     - op: add
       path: /spec/sourceRepos/-
-      value: master
-- target:
-    group: argoproj.io
-    kind: Application
-    labelSelector: "gitops.tier.layer=gitops"
-  patch: |-
-    - op: add
-      path: /spec/source/repoURL
-      value: https://github.com/rampadc/wds-wks-unmanaged-aws.git
-    - op: add
-      path: /spec/source/targetRevision
       value: master
 - target:
     group: argoproj.io
