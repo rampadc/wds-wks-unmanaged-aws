@@ -11,7 +11,6 @@ spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
-  project: infra
   source:
     path: namespaces/openshift-storage
   syncPolicy:
