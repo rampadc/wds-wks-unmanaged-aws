@@ -56,7 +56,7 @@ set -e
 
 echo "Applying Infrastructure updates"
 
-pushd ${SCRIPTDIR}/../0-bootstrap/1-infra
+pushd ${SCRIPTDIR}/../0-bootstrap/1-preinstall
 
 ocpversion=$(oc get clusterversion version | grep -v NAME | awk '{print $2}')
 a=( ${ocpversion//./ } )
@@ -101,36 +101,36 @@ fi
 
 sed -i '' -e '/machinesets.yaml/s/^#//g' kustomization.yaml
     
-# edit argocd/machinesets.yaml
+# edit infra/machinesets.yaml
 echo " -  Updating machinesets"
 
 # spacings are intended 
-sed -i '' -e '/cloudProvider:/ {' -e 'n; s/.*name.*$/            name: '${platform}'/' -e '}'  argocd/machinesets.yaml
-sed -i '' -e '/cloudProvider:/ {' -e 'n;n; s/.*managed.*$/            managed: '${managed}'/' -e '}'  argocd/machinesets.yaml
-sed -i '' -e 's#.*infrastructureId.*$#          infrastructureId: '${infraID}'#' argocd/machinesets.yaml
+sed -i '' -e '/cloudProvider:/ {' -e 'n; s/.*name.*$/            name: '${platform}'/' -e '}'  infra/machinesets.yaml
+sed -i '' -e '/cloudProvider:/ {' -e 'n;n; s/.*managed.*$/            managed: '${managed}'/' -e '}'  infra/machinesets.yaml
+sed -i '' -e 's#.*infrastructureId.*$#          infrastructureId: '${infraID}'#' infra/machinesets.yaml
 
 if [[ "${platform}" == "vsphere" ]]; then
-    sed -i '' -e 's#.*networkName.*$#            networkName: '$VS_NETWORK'#' argocd/machinesets.yaml
-    sed -i '' -e 's#.*datacenter.*$#           datacenter: '$VS_DATACENTER'#' argocd/machinesets.yaml
-    sed -i '' -e 's#.*datastore.*$#            datastore: '$VS_DATASTORE'#' argocd/machinesets.yaml
-    sed -i '' -e 's#.*cluster.*$#            cluster: '$VS_CLUSTER'#' argocd/machinesets.yaml
-    sed -i '' -e 's#.*server.*$#            server: '$VS_SERVER'#' argocd/machinesets.yaml
+    sed -i '' -e 's#.*networkName.*$#            networkName: '$VS_NETWORK'#' infra/machinesets.yaml
+    sed -i '' -e 's#.*datacenter.*$#           datacenter: '$VS_DATACENTER'#' infra/machinesets.yaml
+    sed -i '' -e 's#.*datastore.*$#            datastore: '$VS_DATASTORE'#' infra/machinesets.yaml
+    sed -i '' -e 's#.*cluster.*$#            cluster: '$VS_CLUSTER'#' infra/machinesets.yaml
+    sed -i '' -e 's#.*server.*$#            server: '$VS_SERVER'#' infra/machinesets.yaml
 else
-    sed -i '' -e 's#.*region.*$#            region: '${region}'#' argocd/machinesets.yaml
-    sed -i '' -e 's#.*image.*$#            image: '${image}'#' argocd/machinesets.yaml
+    sed -i '' -e 's#.*region.*$#            region: '${region}'#' infra/machinesets.yaml
+    sed -i '' -e 's#.*image.*$#            image: '${image}'#' infra/machinesets.yaml
 fi
 
 sed -i '' -e  '/infraconfig.yaml/s/^#//g' kustomization.yaml
 
-# edit argocd/infraconfig.yaml
+# edit infra/infraconfig.yaml
 echo " -  Updating infraconfig"
-sed -i '' -e '/cloudProvider:/ {' -e 'n; s/.*name.*$/            name: '${platform}'/' -e '}'  argocd/infraconfig.yaml
-sed -i '' -e '/cloudProvider:/ {' -e 'n;n; s/.*managed.*$/            managed: '${managed}'/' -e '}'  argocd/infraconfig.yaml
+sed -i '' -e '/cloudProvider:/ {' -e 'n; s/.*name.*$/            name: '${platform}'/' -e '}'  infra/infraconfig.yaml
+sed -i '' -e '/cloudProvider:/ {' -e 'n;n; s/.*managed.*$/            managed: '${managed}'/' -e '}'  infra/infraconfig.yaml
 
 sed -i '' -e '/namespace-openshift-storage.yaml/s/^#//g' kustomization.yaml
 sed -i '' -e '/storage.yaml/s/^#//g' kustomization.yaml
 
-# edit argocd/storage.yaml
+# edit infra/storage.yaml
 newChannel="stable-${majorVer}"
 defsc=$(oc get sc | grep default | awk '{print $1}')
 if [[ "$platform" == "aws" ]]; then
@@ -142,8 +142,8 @@ if [[ "$platform" == "aws" ]]; then
 fi
 
 echo " -  Updating storage"
-sed -i '' -e 's#.*channel.*$#          channel: '${newChannel}'#' argocd/storage.yaml
-sed -i '' -e 's#.*storageClass.*$#          storageClass: '${storageClass}'#' argocd/storage.yaml
+sed -i '' -e 's#.*channel.*$#          channel: '${newChannel}'#' infra/storage.yaml
+sed -i '' -e 's#.*storageClass.*$#          storageClass: '${storageClass}'#' infra/storage.yaml
 
 popd
 
