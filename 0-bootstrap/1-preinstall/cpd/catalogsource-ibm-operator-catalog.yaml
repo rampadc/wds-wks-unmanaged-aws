@@ -14,7 +14,7 @@ metadata:
   name: ibm-operator-catalog
   namespace: openshift-marketplace
   annotations:
-    argocd.argoproj.io/sync-wave: "102"
+    argocd.argoproj.io/sync-wave: "112"
 spec:
   displayName: "IBM Operator Catalog" 
   publisher: IBM

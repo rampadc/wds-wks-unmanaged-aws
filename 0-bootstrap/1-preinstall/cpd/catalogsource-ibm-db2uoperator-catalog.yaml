@@ -14,7 +14,7 @@ metadata:
   name: ibm-db2uoperator-catalog
   namespace: openshift-marketplace
   annotations:
-    argocd.argoproj.io/sync-wave: "102"
+    argocd.argoproj.io/sync-wave: "112"
 spec:
   sourceType: grpc
   image: docker.io/ibmcom/ibm-db2uoperator-catalog:latest
