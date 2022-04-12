@@ -35,7 +35,7 @@ spec:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: infra
-  source: # repoURL  and targetRevision populated by kustomize patches in 1-infra/kustomization.yaml
+  source: # repoURL  and targetRevision populated by kustomize patches in 0-infra/kustomization.yaml
     path: 0-bootstrap/0-infra
   syncPolicy:
     automated:
