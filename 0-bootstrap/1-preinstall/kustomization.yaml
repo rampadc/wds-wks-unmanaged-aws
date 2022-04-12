@@ -1,4 +1,8 @@
 resources:
+ - infra/namespace-openshift-storage.yaml
+ - infra/machinesets.yaml
+ - infra/storage.yaml
+ - infra/infraconfig.yaml
  - cpd/ns-cpd-instance-tether.yaml
  - cpd/ns-cpd-instance.yaml
  - cpd/ns-cpd-operators.yaml
