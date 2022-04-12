@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: 0-bootstrap
-    repoURL: https://github.com/rampadc/cpd-wds-wks.git
+    repoURL: https://github.com/rampadc/wds-wks-unmanaged-aws.git
     targetRevision: master
   syncPolicy:
     automated:

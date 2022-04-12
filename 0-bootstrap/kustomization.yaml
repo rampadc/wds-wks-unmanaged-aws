@@ -10,7 +10,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/source/repoURL
-      value: https://github.com/rampadc/cpd-wds-wks.git
+      value: https://github.com/rampadc/wds-wks-unmanaged-aws.git
     - op: add
       path: /spec/source/targetRevision
       value: master
@@ -21,7 +21,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/sourceRepos/-
-      value: https://github.com/rampadc/cpd-wds-wks.git
+      value: https://github.com/rampadc/wds-wks-unmanaged-aws.git
     - op: add
       path: /spec/sourceRepos/-
       value: master
@@ -32,7 +32,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/sourceRepos/-
-      value: https://github.com/rampadc/cpd-wds-wks.git
+      value: https://github.com/rampadc/wds-wks-unmanaged-aws.git
     - op: add
       path: /spec/sourceRepos/-
       value: master
@@ -43,7 +43,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/sourceRepos/-
-      value: https://github.com/rampadc/cpd-wds-wks.git
+      value: https://github.com/rampadc/wds-wks-unmanaged-aws.git
     - op: add
       path: /spec/sourceRepos/-
       value: master
