@@ -4,3 +4,5 @@ metadata:
   name: ibm-common-services
   annotations:
     argocd.argoproj.io/sync-wave: "110"
+  labels:
+    gitops.tier.layer: preinstall

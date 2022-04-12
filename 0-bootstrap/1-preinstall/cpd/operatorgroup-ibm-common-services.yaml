@@ -5,6 +5,8 @@ metadata:
   namespace: ibm-common-services
   annotations:
     argocd.argoproj.io/sync-wave: "111"
+  labels:
+    gitops.tier.layer: preinstall
 spec:
   targetNamespaces:
   - ibm-common-services

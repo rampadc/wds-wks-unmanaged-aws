@@ -16,7 +16,18 @@ patches:
 - target:
     group: argoproj.io
     kind: Application
-    labelSelector: "gitops.tier.layer=gitops"
+    labelSelector: "gitops.tier.layer=infra"
+  patch: |-
+    - op: add
+      path: /spec/source/repoURL
+      value: https://github.com/rampadc/wds-wks-unmanaged-aws.git
+    - op: add
+      path: /spec/source/targetRevision
+      value: master
+- target:
+    group: argoproj.io
+    kind: Application
+    labelSelector: "gitops.tier.layer=preinstall"
   patch: |-
     - op: add
       path: /spec/source/repoURL

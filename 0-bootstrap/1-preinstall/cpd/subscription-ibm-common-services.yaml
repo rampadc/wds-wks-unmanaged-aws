@@ -5,6 +5,8 @@ metadata:
   namespace: ibm-common-services
   annotations:
     argocd.argoproj.io/sync-wave: "190"
+  labels:
+    gitops.tier.layer: preinstall
 spec:
   channel: v3
   installPlanApproval: Automatic

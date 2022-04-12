@@ -5,6 +5,8 @@ metadata:
   namespace: cpd-operators
   annotations:
     argocd.argoproj.io/sync-wave: "111"
+  labels:
+    gitops.tier.layer: preinstall
 spec:
   targetNamespaces:
   - cpd-operators

@@ -4,3 +4,5 @@ metadata:
   name: cpd-instance
   annotations:
     argocd.argoproj.io/sync-wave: "110"
+  labels:
+    gitops.tier.layer: preinstall
